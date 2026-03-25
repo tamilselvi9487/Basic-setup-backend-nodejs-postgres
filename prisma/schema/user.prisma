@@ -1,0 +1,16 @@
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(20)
+  email     String   @unique @db.VarChar(50)
+  password  String
+  role      Role     @default(user)
+  firstName String?  @db.VarChar(20)
+  lastName  String?  @db.VarChar(20)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  admin
+  user
+}
